@@ -20,3 +20,24 @@
 - 参照
     - [Improve disk performance](https://code.visualstudio.com/remote/advancedcontainers/improve-performance)
     - [バインドマウントの利用](https://matsuand.github.io/docs.docker.jp.onthefly/storage/bind-mounts/)
+
+## Create New Angular Project
+
+1. `ng new angular-project-template --directory . --strict`
+1. Update extensions.json
+    ```
+    "recommendations": [
+      "angular.ng-template",
+      "EditorConfig.EditorConfig"
+    ]
+    ```
+1. Update devcontainer.json
+    ```
+    "extensions": [
+      "angular.ng-template",
+      "EditorConfig.EditorConfig"
+    ],
+
+    // Use 'postCreateCommand' to run commands after the container is created.
+    "postCreateCommand": "sudo chown node node_modules && npm install",
+    ```
