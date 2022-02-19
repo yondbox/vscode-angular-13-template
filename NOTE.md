@@ -41,3 +41,63 @@
     // Use 'postCreateCommand' to run commands after the container is created.
     "postCreateCommand": "sudo chown node node_modules && npm install",
     ```
+
+## ESLint & Prettier 設定
+
+1. `ng add @angular-eslint/schematics`
+1. `npm install -D eslint prettier@latest eslint-config-prettier@latest`
+1. Update .eslintrc.json
+    ```
+    "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "prettier" // 追加
+    ],
+    ...
+    "extends": [
+        "plugin:@angular-eslint/template/recommended",
+        "prettier" // 追加
+    ],
+    ```
+1. Update extensions.json
+    ```
+    "recommendations": [
+      "angular.ng-template",
+      "dbaeumer.vscode-eslint",
+      "EditorConfig.EditorConfig",
+      "esbenp.prettier-vscode"
+    ]
+    ```
+1. Update devcontainer.json
+    ```
+    // Add the IDs of extensions you want installed when the container is created.
+    "extensions": [
+      "angular.ng-template",
+      "dbaeumer.vscode-eslint",
+      "EditorConfig.EditorConfig",
+      "esbenp.prettier-vscode"
+    ],
+    ```
+1. Create settings.json
+    ```
+    {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": false,
+        "editor.formatOnPaste": false,
+        "[typescript]": {
+            "editor.formatOnSave": true,
+            "editor.codeActionsOnSave": {
+                "source.fixAll": true,
+                "source.organizeImports": true
+            },
+        }
+    }
+    ```
+1. Update package.json
+    ```
+    "scripts": {
+        "prettier": "prettier --write \"src/app/**/*.{js,json,css,scss,less,md,ts,html,component.html}\""
+    }
+    ```
+- 参照
+    - [angular-starter](https://github.com/wlucha/angular-starter)
