@@ -101,3 +101,18 @@
     ```
 - 参照
     - [angular-starter](https://github.com/wlucha/angular-starter)
+
+## Angular Material 設定
+
+1. `ng add @angular/material`
+1. Create MaterialModule
+   - `ng g module shared/material`
+1. Update app.module.ts
+    ```
+    imports: [
+      BrowserModule,
+      AppRoutingModule,
+      BrowserAnimationsModule,
+      MaterialModule, // 追加
+    ],
+    ```
