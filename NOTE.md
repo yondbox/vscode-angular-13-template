@@ -116,3 +116,44 @@
       MaterialModule, // 追加
     ],
     ```
+
+## CoreModule 設定
+
+1. `ng g module core`
+1. Add HttpInterceptor
+    - http-logger-interceptor.ts
+    - http-error-interceptor.ts
+    - index.ts
+      ```
+      export function provideHttpInterceptors() {
+        return [
+          { provide: HTTP_INTERCEPTORS, useClass: HttpLoggerInterceptor, multi: true },
+          { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
+        ];
+      }
+      ```
+1. Update core.module.ts
+    ```
+    @NgModule({
+      declarations: [],
+      imports: [HttpClientModule],
+      providers: [provideHttpInterceptors()],
+    })
+    export class CoreModule {
+      constructor(@Optional() @SkipSelf() core: CoreModule) {
+        if (core) {
+          throw new Error('You should import core module only in the root module');
+        }
+      }
+    }
+    ```
+1. Update app.module.ts
+```
+    imports: [
+      BrowserModule,
+      AppRoutingModule,
+      BrowserAnimationsModule,
+      MaterialModule,
+      CoreModule, // 追加
+    ],
+```
