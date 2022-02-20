@@ -182,3 +182,13 @@
    - src/app/app.component.ts
    - src/app/app.component.html
    - src/app/app.module.ts
+
+## HomeComponent & NotFoundPageComponent
+
+1. `ng g module home`
+1. `ng g component home`
+1. `ng g component core/components/page-not-found`
+
+# 参照
+
+- [Angular Folder Structure Best Practices](https://www.tektutorialshub.com/angular/angular-folder-structure-best-practices/)
