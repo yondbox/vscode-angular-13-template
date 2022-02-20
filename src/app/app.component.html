@@ -640,3 +640,12 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <router-outlet></router-outlet>
+
+<!-- 共通プログレス -->
+<app-progress-spinner
+  color="primary"
+  mode="indeterminate"
+  [backdropEnabled]="true"
+  [positionGloballyCenter]="true"
+  [displayProgressSpinner]="isDisplayProgressSpinner$ | async"
+></app-progress-spinner>

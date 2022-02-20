@@ -157,3 +157,28 @@
       CoreModule, // 追加
     ],
 ```
+
+## SharedModule 設定
+
+1. `ng g module shared`
+1. Update shared.module.ts
+    ```
+    const COMPONENTS = [];
+
+    @NgModule({
+      declarations: [...COMPONENTS],
+      imports: [MaterialModule],
+      exports: [...COMPONENTS],
+      entryComponents: [],
+    })
+    export class SharedModule {}
+    ```
+1. Add ProgressService
+   - src/app/shared/components/progress-spinner/progress-spinner.component.ts
+   - src/app/shared/components/progress-spinner/progress-spinner.component.scss
+   - src/app/shared/components/progress-spinner/progress-spinner.component.html
+   - src/app/core/services/progress/progress.service.ts
+   - src/app/core/core.module.ts
+   - src/app/app.component.ts
+   - src/app/app.component.html
+   - src/app/app.module.ts
