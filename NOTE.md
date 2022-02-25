@@ -189,6 +189,50 @@
 1. `ng g component home`
 1. `ng g component core/components/page-not-found`
 
+## Font 設定
+
+- 外部のサーバーに見に行かないようにする
+
+1. index.html から以下の3行を削除
+    ```
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    ```
+1. `npm install material-design-icons`
+1. angular.json に追加
+    - "build": {"options": {"styles": [] に追加
+    - "test": {"options": {"styles": [] に追加
+    ```
+    "styles": [
+      "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+      "./node_modules/material-design-icons/iconfont/material-icons.css", // 追加
+      "src/styles.scss"
+    ],
+    ```
+1. `"./node_modules/material-design-icons/iconfont/material-icons.css"`
+
+- 参照
+    - [Angular の Material Icon をローカルで使う方法について](https://github.com/angular/angular-cli/issues/2662)
+
+## reset.css 設定
+
+- ブラウザ毎のスタイルの差がでないようにする css
+
+1. `npm install --save reset-css`
+1. angular.json に追加
+    - "build": {"options": {"styles": [] に追加
+    - "test": {"options": {"styles": [] に追加
+    - 一番最初に読み込むように先頭に追加する
+    ```
+    "styles": [
+      "./node_modules/reset-css/reset.css", // 追加
+      "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+      "./node_modules/material-design-icons/iconfont/material-icons.css",
+      "src/styles.scss"
+    ],
+    ```
+
 # 参照
 
 - [Angular Folder Structure Best Practices](https://www.tektutorialshub.com/angular/angular-folder-structure-best-practices/)
